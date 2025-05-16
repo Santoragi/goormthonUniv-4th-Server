@@ -7,6 +7,13 @@ plugins {
 group = 'hello'
 version = '0.0.1-SNAPSHOT'
 
+//lombok 설정
+configurations {
+	compileOnly{
+		extendsFrom annotationProcessor
+	}
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
@@ -18,6 +25,13 @@ repositories {
 }
 
 dependencies {
+	//lombok 설정 시작
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	//lombok 설정 끝
+
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
